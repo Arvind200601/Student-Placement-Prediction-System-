@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}About Placement Pulse{% endblock %}
+{% block content %}
+<section class="section-block">
+  <div class="section-heading">
+    <span>About Placement Pulse</span>
+    <p>Placement Pulse is a modern student readiness platform that blends machine learning, resume intelligence, and actionable career guidance for campus hiring success.</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3>Smart placement forecasting</h3>
+      <p>Predicts student placement readiness by combining academic performance, project experience, internships, and resume quality.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Resume intelligence</h3>
+      <p>Analyzes resume text for technical skills, certifications, and experience to strengthen placement recommendations.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Data-driven guidance</h3>
+      <p>Delivers personalized suggestions for improving CGPA, coding fluency, communication, internships, and project output.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading">
+    <span>How the system works</span>
+    <p>Every prediction combines academic metrics with resume insights, then surfaces strengths, gaps, and next-step actions.</p>
+  </div>
+  <div class="timeline-wrap">
+    <article class="timeline-step">
+      <div class="timeline-point">1</div>
+      <h4>Input student profile</h4>
+      <p>Collect CGPA, programming score, communication score, internships, projects and attendance for the candidate.</p>
+    </article>
+    <article class="timeline-step">
+      <div class="timeline-point">2</div>
+      <h4>Upload resume</h4>
+      <p>Extract keywords, skills, certifications and experience from the uploaded resume to enrich predictions.</p>
+    </article>
+    <article class="timeline-step">
+      <div class="timeline-point">3</div>
+      <h4>Evaluate readiness</h4>
+      <p>Run the Random Forest model alongside resume scoring to create a balanced placement readiness forecast.</p>
+    </article>
+    <article class="timeline-step">
+      <div class="timeline-point">4</div>
+      <h4>Generate report</h4>
+      <p>Create a polished PDF summary with recommendations, job-fit insights, and next-step improvement goals.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading">
+    <span>Machine learning engine</span>
+    <p>The analytics engine is built with scikit-learn and optimized for transparency, accuracy, and real-world placement scenarios.</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3>Random Forest</h3>
+      <p>Primary classifier for placement readiness, tuned for strong accuracy and consistency across student profiles.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Linear SVM</h3>
+      <p>Supporting classifier used for decision validation and to cross-check predictions for sharper placement guidance.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Resume scoring</h3>
+      <p>Custom resume analysis identifies skills, tools, and keywords that signal strong campus placement potential.</p>
+    </article>
+  </div>
+</section>
+
+<section class="glass-card">
+  <h2>Why Placement Pulse matters</h2>
+  <ul class="check-list">
+    <li>Reduce uncertainty in placement decisions with machine learning insights.</li>
+    <li>Help students track readiness across academic and professional metrics.</li>
+    <li>Support placement teams with clear, structured prediction reports.</li>
+    <li>Make career coaching scalable with automatic suggestions and scorecards.</li>
+  </ul>
+</section>
+
+<section class="section-block">
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3>Built for institutions</h3>
+      <p>Designed as an educational placement aid for colleges, training centers, and career services teams.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Future-ready scope</h3>
+      <p>Ready to expand with student dashboards, bulk uploads, employer matching, and recruitment analytics.</p>
+    </article>
+    <article class="feature-card">
+      <h3>About the developer</h3>
+      <p>Created by {{ developer }} at {{ college }}, focused on practical student placement and AI-enabled decision support.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

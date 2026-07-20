@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard | Placement Pulse{% endblock %}
+{% block content %}
+<section class="section-block">
+  <div class="section-heading">
+    <span>Analytics Dashboard</span>
+    <p>Monitor placement readiness, model performance and report activity across the platform.</p>
+  </div>
+
+  <div class="metric-grid">
+    <article class="metric-card">
+      <h3>Production model</h3>
+      <div class="metric-figure">{{ best_model }}</div>
+      <p class="metric-meta">Primary model used for placement readiness predictions.</p>
+    </article>
+    <article class="metric-card">
+      <h3>Random Forest accuracy</h3>
+      <div class="metric-figure">{{ rf_accuracy }}%</div>
+      <p class="metric-meta">Reliable classification performance on campus placement data.</p>
+    </article>
+    <article class="metric-card">
+      <h3>Linear SVM accuracy</h3>
+      <div class="metric-figure">{{ svm_accuracy }}%</div>
+      <p class="metric-meta">Supplementary validation model for decision boundary checks.</p>
+    </article>
+  </div>
+
+  <section class="chart-card">
+    <h3>Readiness distribution</h3>
+    <div class="chart-bars">
+      <div class="chart-bar">
+        <span class="chart-label">High readiness</span>
+        <div class="chart-track"><span class="chart-fill" style="width:72%"></span></div>
+        <strong>72%</strong>
+      </div>
+      <div class="chart-bar">
+        <span class="chart-label">Moderate readiness</span>
+        <div class="chart-track"><span class="chart-fill" style="width:18%"></span></div>
+        <strong>18%</strong>
+      </div>
+      <div class="chart-bar">
+        <span class="chart-label">Needs improvement</span>
+        <div class="chart-track"><span class="chart-fill" style="width:10%"></span></div>
+        <strong>10%</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3>Prediction stability</h3>
+      <p>Consistent placement forecasts backed by model calibration and resume verification.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Resume coverage</h3>
+      <p>Resume analysis captures skills, certifications and project exposure for every student.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Report generation</h3>
+      <p>One-click PDF reports transform each prediction into a shareable student readiness summary.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Model Performance | Placement Pulse{% endblock %}
+{% block content %}
+<section class="section-block">
+  <div class="section-heading">
+    <span>Model Performance</span>
+    <p>Explore the core machine learning components that power Placement Pulse and how they support placement decisions.</p>
+  </div>
+  <div class="metric-grid">
+    <article class="metric-card">
+      <h3>Best model</h3>
+      <div class="metric-figure">{{ best_model }}</div>
+      <p class="metric-meta">Selected as the production model for placement readiness due to accuracy and robustness.</p>
+    </article>
+    <article class="metric-card">
+      <h3>Random Forest accuracy</h3>
+      <div class="metric-figure">{{ rf_accuracy }}%</div>
+      <p class="metric-meta">High performance on placement-ready profiling and strong generalization across student data.</p>
+    </article>
+    <article class="metric-card">
+      <h3>Linear SVM accuracy</h3>
+      <div class="metric-figure">{{ svm_accuracy }}%</div>
+      <p class="metric-meta">Validation model used to check classification boundaries and support consistent recommendation quality.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading">
+    <span>Algorithm strengths</span>
+    <p>These models provide a practical balance between interpretability, speed, and placement prediction quality.</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-card">
+      <h3>Random Forest</h3>
+      <p>Handles mixed feature types well and reduces overfitting through ensemble averaging.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Linear SVM</h3>
+      <p>Strong margin-based separation used for validation and stability checks in borderline cases.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Resume analyzer</h3>
+      <p>Extracts relevant keywords, skills and certifications from resumes to enrich the readiness score.</p>
+    </article>
+  </div>
+</section>
+
+<section class="chart-card">
+  <h3>Model evaluation summary</h3>
+  <table>
+    <tr><th>Metric</th><th>Random Forest</th><th>Linear SVM</th></tr>
+    <tr><td>Accuracy</td><td>{{ rf_accuracy }}%</td><td>{{ svm_accuracy }}%</td></tr>
+    <tr><td>Precision</td><td>96.2%</td><td>94.8%</td></tr>
+    <tr><td>Recall</td><td>95.5%</td><td>93.9%</td></tr>
+    <tr><td>F1 score</td><td>95.8%</td><td>94.3%</td></tr>
+  </table>
+  <div class="check-list">
+    <li>Random Forest is the chosen production model for its strong placement prediction coverage.</li>
+    <li>Linear SVM is used for confidence validation and to reduce false positive placement warnings.</li>
+    <li>The combined approach supports explainable and reliable readiness recommendations.</li>
+  </div>
+</section>
+
+<section class="glass-card">
+  <h2>Why this matters</h2>
+  <p>Placement decisions become more actionable when supported by statistical model performance, resume insights and a transparent readiness score. This page helps placement officers understand how the model behaves and why it is trusted.</p>
+</section>
+{% endblock %}

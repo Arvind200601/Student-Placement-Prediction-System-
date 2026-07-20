@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Analyzing Resume | Placement Pulse{% endblock %}
+{% block content %}
+<section class="loading-shell">
+  <div class="loading-card">
+    <div class="loading-step active">
+      <div class="loading-icon">📄</div>
+      <div>
+        <p>Analyzing Resume...</p>
+        <div class="loading-bar"><span class="loading-bar-fill" style="width:45%"></span></div>
+      </div>
+    </div>
+    <div class="loading-step">
+      <div class="loading-icon">🤖</div>
+      <div>
+        <p>Finding Skills...</p>
+        <div class="loading-bar"><span class="loading-bar-fill" style="width:80%"></span></div>
+      </div>
+    </div>
+    <div class="loading-step">
+      <div class="loading-icon">📈</div>
+      <div>
+        <p>Predicting Placement...</p>
+        <div class="loading-bar"><span class="loading-bar-fill" style="width:100%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

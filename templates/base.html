@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Placement Pulse | Student Placement Prediction{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <div class="background-layers" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="particles"></div>
+  </div>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/">Placement Pulse</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/manual">Manual</a>
+        <a href="/resume">Resume</a>
+        <a href="/model">Model Performance</a>
+        <a href="/download">Reports</a>
+        <a href="/dashboard">Analytics</a>
+        <a href="mailto:placementpulse.ml@gmail.com?subject=Student%20Placement%20Prediction%20System%20-%20Query&body=Hello%2C%0A%0AI%20have%20a%20question%20about%20the%20Student%20Placement%20Prediction%20System.%0A%0AThanks%2C">Contact</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <div class="fab-group">
+      <a class="fab help-fab" href="mailto:placementpulse.ml@gmail.com?subject=Student%20Placement%20Prediction%20System%20-%20Query&body=Hello%2C%0A%0AI%20have%20a%20question%20about%20the%20Student%20Placement%20Prediction%20System.%0A%0AThanks%2C"><i class="fa-solid fa-message"></i> Need Help?</a>
+      <a class="fab top-fab" href="#top"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <h2>Placement Pulse</h2>
+          <p>Student Placement Prediction using Machine Learning</p>
+        </div>
+        <div>
+          <p>Developed by</p>
+          <p><strong>Arvind Kartikeyan S</strong></p>
+          <p>B.Tech Information Technology</p>
+          <p>Chennai Institute of Technology</p>
+        </div>
+        <div>
+          <p>Version 2.0</p>
+          <p>Professional ML-driven dashboard experience</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const counters = document.querySelectorAll('.count-number');
+      counters.forEach((counter) => {
+        const target = +counter.dataset.target;
+        const duration = 1800;
+        const step = target / (duration / 30);
+        let current = 0;
+        const update = () => {
+          current += step;
+          if (current >= target) {
+            counter.textContent = counter.dataset.suffix ? current.toFixed(0) + counter.dataset.suffix : current.toFixed(0);
+          } else {
+            counter.textContent = counter.dataset.suffix ? Math.floor(current) + counter.dataset.suffix : Math.floor(current);
+            requestAnimationFrame(update);
+          }
+        };
+        update();
+      });
+    });
+  </script>
+</body>
+</html>

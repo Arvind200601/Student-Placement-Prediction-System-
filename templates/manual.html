@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Manual Prediction | Placement Pulse{% endblock %}
+{% block content %}
+<section class="section-block">
+  <div class="section-heading">
+    <span>Manual Prediction</span>
+    <p>Enter student details for a fast readiness prediction using academic, project, and internship data.</p>
+  </div>
+  <section class="form-card">
+    <form action="/manual_predict" method="POST">
+      <div class="form-grid">
+        <div class="field-card">
+          <label for="name">Student name</label>
+          <input id="name" type="text" name="name" placeholder="Enter student name" required />
+        </div>
+        <div class="field-card">
+          <label for="cgpa">CGPA (0 - 10)</label>
+          <input id="cgpa" type="number" step="0.01" min="0" max="10" name="cgpa" placeholder="Example: 8.45" required />
+        </div>
+        <div class="field-card">
+          <label for="programming">Programming skills (1 - 10)</label>
+          <input id="programming" type="number" min="1" max="10" name="programming" placeholder="Example: 8" required />
+        </div>
+        <div class="field-card">
+          <label for="communication">Communication skills (1 - 10)</label>
+          <input id="communication" type="number" min="1" max="10" name="communication" placeholder="Example: 7" required />
+        </div>
+        <div class="field-card">
+          <label for="projects">Projects completed (0 - 10)</label>
+          <input id="projects" type="number" min="0" max="10" name="projects" placeholder="Example: 3" required />
+        </div>
+        <div class="field-card">
+          <label for="internship">Internships (0 - 5)</label>
+          <input id="internship" type="number" min="0" max="5" name="internship" placeholder="Example: 1" required />
+        </div>
+        <div class="field-card">
+          <label for="attendance">Attendance (%)</label>
+          <input id="attendance" type="number" min="0" max="100" name="attendance" placeholder="Example: 92" required />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn primary submit-btn" type="submit"><i class="fa-solid fa-magic"></i> Predict placement</button>
+        <a class="btn ghost" href="/"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+      </div>
+    </form>
+  </section>
+</section>
+{% endblock %}

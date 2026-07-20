@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Resume Prediction | Placement Pulse{% endblock %}
+{% block content %}
+<section class="section-block">
+  <div class="section-heading">
+    <span>Resume Prediction</span>
+    <p>Upload a PDF resume to evaluate placement readiness from experience, skills, and profile data.</p>
+  </div>
+  <section class="form-card">
+    <form action="/analyze_resume" method="POST" enctype="multipart/form-data">
+      <div class="field-card">
+        <label for="resume">Upload student resume (PDF)</label>
+        <input id="resume" type="file" name="resume" accept=".pdf" required />
+      </div>
+      <div class="form-actions">
+        <button class="btn primary submit-btn" type="submit"><i class="fa-solid fa-brain"></i> Analyze placement</button>
+        <a class="btn ghost" href="/"><i class="fa-solid fa-arrow-left"></i> Back to home</a>
+      </div>
+    </form>
+  </section>
+  <section class="section-block">
+    <div class="section-heading">
+      <span>Resume evaluation focus</span>
+      <p>The analysis checks academic fit, skills, projects, internships, and career readiness signals.</p>
+    </div>
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>Academic profile</h3>
+        <p>Examine performance and project background to estimate industry readiness.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Technical skills</h3>
+        <p>Identify programming and technical strengths for placement suitability.</p>
+      </article>
+      <article class="feature-card">
+        <h3>Project and internship fit</h3>
+        <p>Review practical experience that influences placement confidence.</p>
+      </article>
+    </div>
+  </section>
+</section>
+{% endblock %}

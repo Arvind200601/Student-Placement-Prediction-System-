@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Placement Prediction Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+  <div class="result-shell">
+    <section class="result-header">
+      <div>
+        <span class="eyebrow">Resume Prediction</span>
+        <h1>{{ student_name }} — Placement Readiness</h1>
+        <p>Professional resume-driven placement analysis with live progress bars and polished recommendation cards.</p>
+      </div>
+      <div class="score-card glass-card">
+        <div class="result-icon">🏆</div>
+        <strong>{{ prediction }}</strong>
+        <p>Confidence: {{ confidence }}%</p>
+        <p>Grade: {{ grade }}</p>
+        {% if placement_level %}<p>Level: {{ placement_level }}</p>{% endif %}
+      </div>
+    </section>
+
+    <section class="profile-grid">
+      <article class="card glass-card">
+        <h3>Student Profile</h3>
+        <ul class="profile-list">
+          <li><span>Student</span>{{ student_name }}</li>
+          <li><span>Model</span>{{ best_model }}</li>
+          <li><span>Resume score</span>{% if resume_score %}{{ resume_score }}/100{% else %}Manual{% endif %}</li>
+          <li><span>Projects</span>{{ projects }}</li>
+          <li><span>Internship</span>{{ internship }}</li>
+        </ul>
+      </article>
+      <article class="card glass-card">
+        <h3>Live Placement Metrics</h3>
+        <div class="progress-panel">
+          <div class="progress-row"><span>CGPA</span><strong>{{ cgpa }}</strong></div>
+          <div class="progress-bar-wrap"><span class="progress-fill" style="width:{{ (cgpa / 10) * 100 }}%"></span></div>
+          <div class="progress-row"><span>Programming</span><strong>{{ (programming * 10)|round(0) }}%</strong></div>
+          <div class="progress-bar-wrap"><span class="progress-fill" style="width:{{ programming * 10 }}%"></span></div>
+          <div class="progress-row"><span>Communication</span><strong>{{ (communication * 10)|round(0) }}%</strong></div>
+          <div class="progress-bar-wrap"><span class="progress-fill" style="width:{{ communication * 10 }}%"></span></div>
+          <div class="progress-row"><span>Projects</span><strong>{{ (projects * 10)|round(0) }}%</strong></div>
+          <div class="progress-bar-wrap"><span class="progress-fill" style="width:{{ projects * 10 }}%"></span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="info-grid">
+      <article class="card glass-card">
+        <h3>📄 Resume Insights</h3>
+        {% if skills|length > 0 %}
+          <p>{{ skills|length }} technical skills detected.</p>
+          <div class="skill-grid">{% for skill in skills %}<span class="skill-badge">{{ skill }}</span>{% endfor %}</div>
+        {% else %}
+          <p>No resume skills detected for this result.</p>
+        {% endif %}
+      </article>
+      <article class="card glass-card">
+        <h3>🤖 AI Suggestions</h3>
+        <ul class="check-list">{% for item in suggestions %}<li>✔ {{ item }}</li>{% endfor %}</ul>
+      </article>
+    </section>
+
+    <section class="info-grid">
+      <article class="card glass-card">
+        <h3>📊 Resume Statistics</h3>
+        <table>
+          <tr><td>Resume Score</td><td>{% if resume_score %}{{ resume_score }}/100{% else %}N/A{% endif %}</td></tr>
+          <tr><td>Projects</td><td>{{ projects }}</td></tr>
+          <tr><td>Internship</td><td>{{ internship }}</td></tr>
+          <tr><td>Certifications</td><td>{{ certifications }}</td></tr>
+          <tr><td>Technical Skills</td><td>{{ skills|length }}</td></tr>
+        </table>
+      </article>
+      <article class="card glass-card">
+        <h3>🏢 Eligible Opportunities</h3>
+        <div class="company-list">{% for company in companies %}<span class="badge company">{{ company }}</span>{% endfor %}</div>
+      </article>
+    </section>
+
+    <section class="career-card glass-card">
+      <h3>🚀 Career Readiness Summary</h3>
+      <p>Based on the Random Forest model, your placement readiness is <strong>{{ confidence }}%</strong>.</p>
+      {% if "PLACED" in prediction %}
+        <p>You are well-prepared for campus recruitment. Keep improving coding, internships, and projects.</p>
+      {% else %}
+        <p>Your profile needs improvement. Focus on skills, projects, internships, and communication.</p>
+      {% endif %}
+    </section>
+
+    <section class="button-group action-row">
+      <a class="btn ghost" href="/manual"><i class="fa-solid fa-user-graduate"></i> Manual Prediction</a>
+      <a class="btn ghost" href="/resume"><i class="fa-solid fa-file-arrow-up"></i> Analyze Another Resume</a>
+      <a class="btn primary" href="/download_report?student_name={{ student_name }}&prediction={{ prediction }}&confidence={{ confidence }}&resume_score={{ resume_score if resume_score else 'Manual' }}"><i class="fa-solid fa-file-pdf"></i> Download Report</a>
+    </section>
+
+    <section class="summary-card glass-card">
+      <h3>📋 Prediction Summary</h3>
+      <p>This prediction uses the Random Forest model and evaluates academic performance, programming, communication, internship experience, projects, attendance, and resume quality.</p>
+    </section>
+  </div>
+</body>
+</html>
